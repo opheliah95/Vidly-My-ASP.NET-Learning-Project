@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Vidly.Models
 {
-    public class Moive
+    public class Movie
     {
         public string name { get; set; }
         public int  price { get; set; }

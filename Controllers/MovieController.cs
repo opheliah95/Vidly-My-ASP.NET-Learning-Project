@@ -6,12 +6,12 @@ using System.Web.Mvc;
 using Vidly.Models;
 namespace Vidly.Controllers
 {
-    public class MoiveController : Controller
+    public class MovieController : Controller
     {
         // changed return type to make unit test easier
         public ActionResult GenerateRandomFilm()
         {
-            var moive = new Moive() { name = "Default", ID = 1, price = 30 };
+            var moive = new Movie() { name = "Default", ID = 1, price = 30 };
             //return Content ("Hello world");
             //return HttpNotFound();
             //return new EmptyResult();
@@ -22,6 +22,11 @@ namespace Vidly.Controllers
         public ActionResult Edit (int? id)
         {
             return Content("The parameter is: " + id);
+        }
+
+        public ActionResult ByReleaseDate(int? year = 2000, int? month = 4)
+        {
+            return Content(year + "/" + month);
         }
 
         public ActionResult Index(int? pageIndex, string sortBy)
