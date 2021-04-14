@@ -24,6 +24,7 @@ namespace Vidly.Controllers
             return Content("The parameter is: " + id);
         }
 
+        [Route("movies/released/{year}/{month::regex(\\d{2})::range(1,12)}")]
         public ActionResult ByReleaseDate(int? year = 2000, int? month = 4)
         {
             return Content(year + "/" + month);
