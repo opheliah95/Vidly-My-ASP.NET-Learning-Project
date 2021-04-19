@@ -1,9 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
+
 namespace Vidly.Controllers
 {
     public class MovieController : Controller
@@ -11,12 +13,17 @@ namespace Vidly.Controllers
         // changed return type to make unit test easier
         public ActionResult GenerateRandomFilm()
         {
-            var moive = new Movie() { name = "Default", ID = 1, price = 30 };
-            //return Content ("Hello world");
-            //return HttpNotFound();
-            //return new EmptyResult();
-            //return RedirectToAction("Index", "Home", new { page = 1, sortBy="name" });
-            return View(moive);
+            var movie = new Movie() { name = "Default", ID = 1, price = 30 };
+            List<Customer> customers = new List<Customer>
+            {
+                new Customer{ ID = 1, Name = "C1" },
+                new Customer{ ID = 2, Name = "C2"}
+
+            };
+
+            // Create a new view model
+            RandomMovieViewModel randViewModel = new RandomMovieViewModel() { Movie = movie, Customers = customers };
+            return View(randViewModel);
         }
 
         public ActionResult Edit (int? id)
