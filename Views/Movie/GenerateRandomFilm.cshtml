@@ -22,21 +22,30 @@
 <h2>Name of the movie is: @Model.Movie.name</h2>
 <h3>The price of the movie is: @Model.Movie.price</h3>
 
-<!--Razor view to print out customer info-->
-<table>
-   <tr>
-       <th>Name</th>
-       <th>ID</th>
-   </tr>
-    @{ foreach (Customer c in Model.Customers)
-        {
-            <tr>
-                <td>@c.Name</td>
-                <td>@c.ID</td>
-            </tr>
-        }
+@if (Model.Customers.Count == 0)
+{
+    <text>None have watched this film!</text>
+}
+else
+{
+    <!--Razor view to print out customer info-->
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>ID</th>
+        </tr>
+        @{ foreach (Customer c in Model.Customers)
+            {
+                <tr>
+                    <td>@c.Name</td>
+                    <td>@c.ID</td>
+                </tr>
+            }
 
-    }
-</table>
+        }
+    </table>
+}
+
+
 
 
