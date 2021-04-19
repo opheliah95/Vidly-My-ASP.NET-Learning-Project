@@ -18,8 +18,17 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*
+    Below changes the classname of the moive
+    depending on number of customers have it
+*@
+
+@{
+    var className = Model.Customers.Count >= 2 ? "popular" : null;
+}
+
 <title>@ViewBag.Title</title>
-<h2>Name of the movie is: @Model.Movie.name</h2>
+<h2>Name of the movie is: <i class="@className">@Model.Movie.name</i></h2>
 <h3>The price of the movie is: @Model.Movie.price</h3>
 
 @if (Model.Customers.Count == 0)
