@@ -1,12 +1,42 @@
 ﻿@model Vidly.ViewModels.RandomMovieViewModel
+@using Vidly.Models
 
+<!--Override default table style-->
+<style>
+    table, th, td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    table {
+        border-spacing: 15px;
+    }
+</style>
 
 @{
     ViewBag.Title = "GenerateRandomFilm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Movie.name</h2>
-<h3>@Model.Movie.price</h3>
-<h3>@Model.Customers</h3>
+<title>@ViewBag.Title</title>
+<h2>Name of the movie is: @Model.Movie.name</h2>
+<h3>The price of the movie is: @Model.Movie.price</h3>
+
+<!--Razor view to print out customer info-->
+<table>
+   <tr>
+       <th>Name</th>
+       <th>ID</th>
+   </tr>
+    @{ foreach (Customer c in Model.Customers)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.ID</td>
+            </tr>
+        }
+
+    }
+</table>
+
 
