@@ -1,8 +1,9 @@
-﻿@using Vidly.Models;
+﻿@using Vidly.Models
+@model Vidly.ViewModels.RandomMovieViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-} 
+}
 
 <div>
     <h1>Customer</h1>
@@ -13,15 +14,22 @@
                 <th scope="col">Customers</th>
             </tr>
         </thead>
+        @displayTable()
     </table>
 </div>
 
 
 <!--List of functions-->
-@functions{ 
-
-    public void displayTable()
+@helper displayTable()
+{
+    foreach (Customer c in Model.Customers)
     {
+        <thead>
+            <tr>
+                <td scope="col">@c.ID</td>
+                <td scope="col">@c.Name</td>
+            </tr>
+        </thead>
 
     }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -14,7 +15,11 @@ namespace Vidly.Controllers
         {
             // populate a dummy list
             List<Customer> customers = GenerateCustomers();
-            return View();
+            Movie moive = GenerateMovie();
+
+            // generate a view-model for customer-moive
+            RandomMovieViewModel rmv = new RandomMovieViewModel() {Movie = moive, Customers = customers };
+            return View(rmv);
         }
 
         // dummy customer data
@@ -25,6 +30,12 @@ namespace Vidly.Controllers
                                 new Customer { ID = 2, Name = "Jane Smith" },
                                 };
             return c;
+        }
+
+        public Movie GenerateMovie()
+        {
+            Movie m = new Movie() { ID = 1, name = "Default" };
+            return m;
         }
     }
 }
